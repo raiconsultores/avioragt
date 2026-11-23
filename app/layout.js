@@ -1,25 +1,20 @@
 import './globals.css';
+import { SITE_URL } from '@/lib/site';
 
+// The language switch happens on the same page (no /es/, /en/ routes), so there are no hreflang alternates:
+// one canonical URL for the whole site.
 export const metadata = {
+  metadataBase: new URL(SITE_URL),
   title: 'AVIORA | Luxury Travel & Bespoke Experiences',
   description: 'AVIORA designs private luxury journeys and bespoke experiences. Rooted in Guatemala, inspired by the world.',
+  alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
+    url: '/',
     siteName: 'AVIORA',
     title: 'AVIORA | Luxury Travel & Bespoke Experiences',
     description: 'The Art of Extraordinary Travel. Exceptional destinations. Meaningful experiences.',
-  },
-  // International SEO: replace the placeholder domain once it is confirmed.
-  alternates: {
-    languages: {
-      en: 'https://www.aviora.example/en/',
-      es: 'https://www.aviora.example/es/',
-      fr: 'https://www.aviora.example/fr/',
-      de: 'https://www.aviora.example/de/',
-      'zh-Hans': 'https://www.aviora.example/zh/',
-      it: 'https://www.aviora.example/it/',
-      'x-default': 'https://www.aviora.example/en/',
-    },
+    images: [{ url: '/img/pool.jpg', alt: 'AVIORA' }],
   },
 };
 
@@ -34,6 +29,8 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'TravelAgency',
   name: 'AVIORA',
+  url: SITE_URL,
+  image: `${SITE_URL}/img/pool.jpg`,
   slogan: 'The Art of Extraordinary Travel',
   description: 'Boutique luxury travel firm designing private journeys and bespoke experiences. Rooted in Guatemala, inspired by the world.',
   knowsLanguage: ['en', 'es', 'fr', 'de', 'it', 'zh'],
